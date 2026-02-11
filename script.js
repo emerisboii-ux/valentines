@@ -1,4 +1,6 @@
-// Typewriter
+/* script.js */
+
+// Typewriter Function
 document.querySelectorAll('.typewriter').forEach(el => {
     const text = el.getAttribute('data-text');
     el.innerHTML = '';
@@ -7,23 +9,23 @@ document.querySelectorAll('.typewriter').forEach(el => {
         if (i < text.length) {
             el.innerHTML += text.charAt(i);
             i++;
-            setTimeout(type, 60);
+            setTimeout(type, 50);
         }
     }
-    setTimeout(type, 300);
+    setTimeout(type, 400);
 });
 
-// Runaway No Button Fix
+// Runaway No Button Logic
 const noBtn = document.getElementById('noBtn');
 if (noBtn) {
     const moveButton = (e) => {
-        // Keeps the button within 80% of the screen so it doesn't go off-edge
-        const x = Math.random() * (window.innerWidth * 0.7);
-        const y = Math.random() * (window.innerHeight * 0.7);
+        // Keeps button within safe viewable area
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 50);
         
-        noBtn.style.position = 'fixed'; // Overlays everything
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
+        noBtn.style.position = 'fixed';
+        noBtn.style.left = `${Math.max(10, x)}px`;
+        noBtn.style.top = `${Math.max(10, y)}px`;
         noBtn.style.zIndex = '999';
     };
 
