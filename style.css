@@ -1,3 +1,4 @@
+/* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Libre+Barcode+128&display=swap');
 
 :root {
@@ -7,7 +8,11 @@
     --glass: rgba(255, 255, 255, 0.08);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body {
     background-color: var(--bg-color);
@@ -18,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Keeps the grid from causing scrolls */
+    overflow: hidden; 
     position: relative;
 }
 
@@ -33,7 +38,6 @@ body {
     z-index: -1;
 }
 
-/* The Master Container - Keeps everything centered and inside */
 .container {
     background: var(--glass);
     padding: 2rem 1.5rem;
@@ -46,20 +50,45 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem; /* Space between elements */
+    gap: 1.2rem;
     z-index: 10;
+    text-align: center;
 }
 
-h1 { font-size: 1.6rem; color: var(--accent); text-transform: uppercase; }
-h2 { font-size: 1.4rem; color: var(--love); }
+h1 { font-size: 1.5rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+h2 { font-size: 1.3rem; color: var(--love); }
 p { font-size: 0.95rem; line-height: 1.5; color: #ccc; }
 
+/* Connection Map Fix */
+.connection-map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.line {
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--love), var(--accent));
+    max-width: 80px;
+}
+
+.pin, .heart-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* Radar Animation */
 .radar {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border: 2px solid var(--accent);
     position: relative;
+    margin-bottom: 10px;
 }
 
 .radar::after {
@@ -75,36 +104,34 @@ p { font-size: 0.95rem; line-height: 1.5; color: #ccc; }
 
 @keyframes pulse {
     0% { width: 0; height: 0; opacity: 1; }
-    100% { width: 150px; height: 150px; opacity: 0; }
+    100% { width: 120px; height: 120px; opacity: 0; }
 }
 
-/* Buttons and Layout */
-.btn-group {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    position: relative; /* Context for the runaway button */
-}
-
+/* Buttons */
 .btn {
-    padding: 12px 24px;
+    width: 100%;
+    padding: 14px;
     background: transparent;
     border: 2px solid var(--accent);
     color: var(--accent);
     text-decoration: none;
     font-weight: bold;
     border-radius: 12px;
-    font-size: 0.9rem;
-    text-align: center;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
 .btn-love { border-color: var(--love); color: var(--love); }
 
-/* The Ticket & Barcode */
+#noBtn {
+    width: auto;
+    min-width: 100px;
+}
+
+/* Ticket & Barcode */
 .ticket {
     border: 2px dashed var(--love);
-    padding: 1.5rem;
+    padding: 1rem;
     width: 100%;
     background: rgba(255, 42, 109, 0.05);
     border-radius: 10px;
@@ -114,5 +141,5 @@ p { font-size: 0.95rem; line-height: 1.5; color: #ccc; }
     font-family: 'Libre Barcode 128', cursive;
     font-size: 3.5rem;
     color: white;
-    margin-top: 10px;
+    white-space: nowrap;
 }
